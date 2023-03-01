@@ -15,3 +15,8 @@ class ProductPageLocators():
     PRODUCT_PRICE = (By.CSS_SELECTOR, 'div.product_main p.price_color')
     PRICE_IN_CONFIRMATION_FIELD = (By.CSS_SELECTOR, '.alertinner p strong')
     NAME_IN_CONFIRMATION_FIELD = (By.CSS_SELECTOR, '.alert:nth-child(1) strong')
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, '#messages div.alert-success:nth-child(1) div.alertinner')
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+ 
