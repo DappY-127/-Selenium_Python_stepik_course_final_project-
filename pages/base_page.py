@@ -34,7 +34,7 @@ class BasePage():
         except TimeoutException:
             return False
         return True
-
+    
     def open(self):
         self.browser.get(self.url)
 
@@ -57,4 +57,9 @@ class BasePage():
         link.click()
 
     def should_be_login_link(self):
-        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"        
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"     
+
+    def go_to_basket_page(self):
+        basket_link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        basket_link.click()
+  
