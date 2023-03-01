@@ -75,3 +75,22 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     product_page.go_to_basket_page()
     basket_page = BasketPage(browser, browser.current_url)
     basket_page.should_be_empty()       
+
+@pytest.mark.loged_user
+class TestUserAddToBasketFromProductPage():
+    def test_user_cant_see_success_message(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+        page = ProductPage(browser, link)
+        page.open()
+        page.should_not_be_success_message()
+
+    def test_user_can_add_product_to_basket(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
+        page = ProductPage(browser, link)
+        page.open()
+        page.add_to_cart()
+        page.solve_quiz_and_get_code()
+        product_name = page.get_product_name()
+        product_price = page.get_product_price()
+        page.should_be_success_message_with_product_name(product_name)
+        page.should_be_cart_total_with_product_price(product_price)
