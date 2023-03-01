@@ -7,9 +7,11 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTRATION_FORM = (By.CSS_SELECTOR, "#register_form")
-    # REGISTRATION_EMAIL_FIELD = (By.CSS_SELECTOR, "#id_registration-email")
-    # REGISTRATION_PASSWORD_FIELD = (By.CSS_SELECTOR, "#id_registration-password1")
-    # REGISTRATION_PASSWORD_CONFIRMATION_FIELD = (By.CSS_SELECTOR, "#id_registration-password2")
-    # LOGIN_EMAIL_FIELD = (By.CSS_SELECTOR, "#id_login-username")
-    # LOGIN_PASSWORD_FIELD = (By.CSS_SELECTOR, "#id_login-password")
-       
+
+class ProductPageLocators():
+    ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, '.btn-add-to-basket')   
+    CONFIRMATION_FIELD = (By.CSS_SELECTOR, '#messages > div.alert-success:nth-child(1)')  # uses in should_be_confirmation_add_to_cart_message  
+    PRODUCT_NAME = (By.CSS_SELECTOR, 'div.product_main h1')
+    PRODUCT_PRICE = (By.CSS_SELECTOR, 'div.product_main p.price_color')
+    PRICE_IN_CONFIRMATION_FIELD = (By.CSS_SELECTOR, '.alertinner p strong')
+    NAME_IN_CONFIRMATION_FIELD = (By.CSS_SELECTOR, '.alert:nth-child(1) strong')
