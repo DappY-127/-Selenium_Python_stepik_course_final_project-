@@ -1,6 +1,3 @@
-import time
-
-import pytest
 from .base_page import BasePage
 from .locators import LoginPageLocators
 
@@ -29,12 +26,3 @@ class LoginPage(BasePage):
         register_button = self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON)
         register_button.click()   
         
-    @pytest.fixture(scope="function")
-    def setup(browser):
-        link = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
-        email = str(time.time()) + "@example.com"  # generate a unique email address for each test run
-        password = "test1234"
-        login_page = LoginPage(browser, link)
-        login_page.open()
-        login_page.register_new_user(email, password)
-        login_page.should_be_authorized_user()     
