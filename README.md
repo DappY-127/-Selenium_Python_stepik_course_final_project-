@@ -7,9 +7,19 @@ This repository contains the final project for the course "Automation Testing wi
 In this project, we create automated tests for a web application. We use Selenium to automate interactions with web application pages, and Python to write tests and run them.
 The project implemented an automated test for the website (http://selenium1py.pythonanywhere.com/). The technologies used are Selenium, Python, PyTest, Page Object Pattern.
 
-The `pages` folder in the repository contains files with page objects for the website. Each file in this folder contains a class representing the corresponding website page. For example, `base_page.py` contains the `BasePage` class which includes common methods for all pages. The `ProductPage` class contains methods for interacting with the product page, such as `add_to_cart()`, `get_product_name()`, `get_product_price()`, `should_be_success_message_with_product_name()`, and `should_be_cart_total_with_product_price()`. The `LoginPage` class contains methods for interacting with the login page, such as `should_be_login_page()`, `register_new_user()`, `should_be_authorized_user()`, etc. The `basket_page.py` file contains the `BasketPage` class with methods for interacting with the shopping cart page, such as `should_be_empty()`. 
+## Project structure
+
+The _"pages"_ folder in the repository contains files with page objects for the website. Each file in this folder contains a class representing the corresponding website page. For example, _"base_page.py"_ contains the `BasePage` class which includes common methods for all pages. The `ProductPage` class contains methods for interacting with the product page, such as `add_to_cart()`, `get_product_name()`, `get_product_price()`, `should_be_success_message_with_product_name()`, and `should_be_cart_total_with_product_price()`. The `LoginPage` class contains methods for interacting with the login page, such as `should_be_login_page()`, `register_new_user()`, `should_be_authorized_user()`, etc. The `basket_page.py` file contains the `BasketPage` class with methods for interacting with the shopping cart page, such as `should_be_empty()`. 
 
 In general, each class represents a corresponding website page and provides methods for interacting with it.
+
+The provided code in _"conftest.py"_ file contains a Pytest fixture named "browser". This fixture is responsible for initializing and returning a Selenium WebDriver instance of either Chrome or Firefox browser based on the user's choice provided through command-line options.
+
+The fixture reads the values of two options `--language` and `--browser` provided through the command-line. The default value of `--language` is set to 'en', which represents the English language. The --browser option accepts either 'chrome' or 'firefox' as valid options.
+
+If the user selects 'chrome', then the fixture creates an instance of ChromeOptions, sets the language option to the selected language, and passes the options to a new instance of `webdriver.Chrome`. If the user selects 'firefox', then the fixture creates an instance of FirefoxOptions, sets the language preference, and passes the options to a new instance of `webdriver.Firefox`.
+
+Finally, the fixture yields the created browser instance to the test function for performing the actual tests. Once the test function finishes execution, the fixture closes the browser using the `quit()` method of the WebDriver instance.
 
 ## Tests
 
